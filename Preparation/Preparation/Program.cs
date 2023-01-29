@@ -8,17 +8,15 @@ namespace Preperation
     {
         static void Main(string[] args)
         {
-            Print();
-            
-            string input = Console.ReadLine();
-            int m = 0;
-            int n = 0;
+            string input;
+            int m, n;
 
-            while(!IsValidInput(input, out m, out n))
+            do
             {
-                Console.WriteLine("Wrong input!");
+                Console.Write("\nInput two numbers (one by one with the space. E.g.: (5 5)) for create spiral array: ");
                 input = Console.ReadLine();
-            }
+            } while (!IsValidInput(input, out m, out n));
+
             int[,] matrix = new int[m, n];
             string direction = "right";
             int matrixSize = m * n;
@@ -72,21 +70,20 @@ namespace Preperation
                     x--;
                 }
             }
-            for(int i = 0; i < n + (m -  n) & i < m; i++) //x
+            ShowArray(matrix);
+        }
+
+        static void ShowArray(int[,] arr)
+        {
+            for (int i = 0; i < arr.GetLength(0); i++) //x
             {
-                for(int j = 0; j < n & j < m + (n - m); j++) //y
+                for (int j = 0; j < arr.GetLength(1); j++) //y
                 {
-                    
-                    Console.Write("{0, 4}", matrix[i, j]);
+
+                    Console.Write("{0, 4}", arr[i, j]);
                 }
                 Console.WriteLine();
             }
-        }
-
-        static void Print()
-        {
-            Console.WriteLine("Spiral array: ");
-            Console.Write("\nInput two numbers (one by one with the space. E.g.: (5 5)) for create spiral array: ");
         }
 
         static bool IsValidInput(string input, out int m, out int n)
