@@ -41,6 +41,7 @@
 # .idea/modules
 # *.iml
 # *.ipr
+# *.DS_Store
 
 # CMake
 cmake-build-*/
