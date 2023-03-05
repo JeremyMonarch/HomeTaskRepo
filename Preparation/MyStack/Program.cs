@@ -20,23 +20,7 @@ namespace MyStack
             Console.WriteLine("Item has been deleted is: {0}", arrayinteger.Delete());
             arrayinteger.SeeLastInter();
             arrayinteger.PrintStack();
-
-
-            Console.WriteLine("\n/---------------------/");
-
-            Stack<int> egstack = new Stack<int>();
-            egstack.Push(1);
-            egstack.Push(2);
-            egstack.Push(3);
-            egstack.Push(4);
-            egstack.Push(5);
-            PrintStack(egstack);
-            Console.WriteLine("Delete item in stack is: {0}", egstack.Pop());
-            Console.WriteLine("Top item is stack is: {0}", egstack.Peek());
-            PrintStack(egstack);
-
         }
-
         static void PrintStack(Stack<int> stack)
         {
             foreach (var s in stack)
