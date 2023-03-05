@@ -14,6 +14,7 @@ namespace MyStack
             arrayinteger.Add(3);
             arrayinteger.Add(4);
             arrayinteger.Add(5);
+            arrayinteger.Add(6);
             arrayinteger.PrintStack();
             arrayinteger.SeeLastInter();
             Console.WriteLine("-------------------");
