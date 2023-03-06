@@ -11,8 +11,6 @@ namespace Sand_Clock
 
             SandCLock();
         }
-
-
         static void SandCLock()
         {
             int a = int.Parse(Console.ReadLine());
