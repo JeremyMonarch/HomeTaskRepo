@@ -1,34 +1,27 @@
 using System;
 using System.Collections;
+using System.Data;
 
 namespace MyStack
 {
-    public class MyStack
+    public class MyStack : IEnumerable
     {
-        public static readonly int maxsize = 10;
+        public static int count = 1;
         public int topstack;
-        public int[] arrayint = new int[maxsize];
+        public int[] arrayint = new int[count];
 
-        public MyStack()
+        public bool Push(int add)
         {
-            topstack = 0;
+            if (count >= arrayint.Length)
+            {
+                Array.Resize(ref arrayint, arrayint.Length + 1);
+            }
+            count++;
+            arrayint[++topstack] = add;
+            return true;
         }
 
-        public bool Add(int add)
-        {
-            if (topstack >= maxsize)
-            {
-                Console.WriteLine("Stack Overfllow");
-                return false;
-            }
-            else
-            {
-                arrayint[++topstack] = add;
-                return true;
-            }
-        }
-
-        public void SeeLastInter()
+        public void Peek()
         {
             if (topstack < 0)
             {
@@ -37,15 +30,15 @@ namespace MyStack
             Console.WriteLine($"Top element is  {topstack}");
         }
 
-        public int Delete()
+        public int Pop()
         {
             if (topstack < 0)
             {
                 Console.WriteLine("Stack is null");
             }
-
             int value = arrayint[topstack--];
-            return value;
+            Array.Resize(ref arrayint, arrayint.Length - 1);
+            return 1;
         }
 
         public void PrintStack()
@@ -59,6 +52,11 @@ namespace MyStack
             {
                 Console.WriteLine(arrayint[i]);
             }
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            return arrayint.GetEnumerator();
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+
 namespace MyStack
 {
     public class MyStackMain
@@ -9,18 +11,26 @@ namespace MyStack
             Console.WriteLine("Hi! You do THIS shiiiiit");
 
             MyStack arrayinteger = new MyStack();
-            arrayinteger.Add(1);
-            arrayinteger.Add(2);
-            arrayinteger.Add(3);
-            arrayinteger.Add(4);
-            arrayinteger.Add(5);
-            arrayinteger.Add(6);
+            arrayinteger.Push(1);
+            arrayinteger.Push(2);
+            arrayinteger.Push(3);
+            arrayinteger.Push(4);
+            arrayinteger.Push(5);
+            arrayinteger.Push(6);
             arrayinteger.PrintStack();
-            arrayinteger.SeeLastInter();
+            arrayinteger.Peek();
             Console.WriteLine("-------------------");
-            Console.WriteLine("Item has been deleted is: {0}", arrayinteger.Delete());
-            arrayinteger.SeeLastInter();
+            Console.WriteLine("Item has been deleted is: {0}", arrayinteger.Pop());
+            arrayinteger.Peek();
             arrayinteger.PrintStack();
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine($"Last element is: {arrayinteger.arrayint.GetValue(arrayinteger.arrayint.Last())}");
+            Console.WriteLine("-------------------");
+
+            foreach (var e in arrayinteger)
+            {
+                Console.WriteLine(e);
+            }
         }
         static void PrintStack(Stack<int> stack)
         {
