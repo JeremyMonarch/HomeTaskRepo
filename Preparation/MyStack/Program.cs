@@ -10,7 +10,7 @@ namespace MyStack
         {
             Console.WriteLine("Hi! You do THIS shiiiiit");
 
-            MyStack arrayinteger = new MyStack();
+            MyStack<int> arrayinteger = new MyStack<int>();
             arrayinteger.Push(1);
             arrayinteger.Push(2);
             arrayinteger.Push(3);
@@ -18,26 +18,15 @@ namespace MyStack
             arrayinteger.Push(5);
             arrayinteger.Push(6);
             arrayinteger.PrintStack();
-            arrayinteger.Peek();
-            Console.WriteLine("-------------------");
-            Console.WriteLine("Item has been deleted is: {0}", arrayinteger.Pop());
-            arrayinteger.Peek();
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine("Item has been deleted is: {0}", arrayinteger.Peek());
+            arrayinteger.Pop();
+            Console.WriteLine("-----------------------------");
+            Console.WriteLine($"Now last element is: {arrayinteger.Peek()}");
             arrayinteger.PrintStack();
             Console.WriteLine("-----------------------------");
-            Console.WriteLine($"Last element is: {arrayinteger.arrayint.GetValue(arrayinteger.arrayint.Last())}");
-            Console.WriteLine("-------------------");
-
-            foreach (var e in arrayinteger)
-            {
-                Console.WriteLine(e);
-            }
-        }
-        static void PrintStack(Stack<int> stack)
-        {
-            foreach (var s in stack)
-            {
-                Console.WriteLine(s);
-            }
+            
+            arrayinteger.ForEach(item => Console.WriteLine($"{item} ")); //Array iterate by custom foreach
         }
     }
 }

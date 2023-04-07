@@ -1,62 +1,63 @@
 using System;
 using System.Collections;
 using System.Data;
+using System.Drawing;
 
 namespace MyStack
 {
-    public class MyStack : IEnumerable
+    public class MyStack<T>
     {
-        public static int count = 1;
-        public int topstack;
-        public int[] arrayint = new int[count];
+        private int _count = -1;
+        private T[] _underliyngArray = new T[5];
 
-        public bool Push(int add)
+        public void Push(T add)
         {
-            if (count >= arrayint.Length)
+            if (_count == _underliyngArray.Length - 1)
             {
-                Array.Resize(ref arrayint, arrayint.Length + 1);
+                Array.Resize(ref _underliyngArray, _underliyngArray.Length * 2);
             }
-            count++;
-            arrayint[++topstack] = add;
-            return true;
+            _count++;
+            _underliyngArray[_count] = add;
         }
 
-        public void Peek()
+        public T Peek()
         {
-            if (topstack < 0)
+            if (_count < 0)
             {
                 Console.WriteLine("Stack is null");
             }
-            Console.WriteLine($"Top element is  {topstack}");
+            return _underliyngArray[_count];
         }
 
-        public int Pop()
+        public T Pop()
         {
-            if (topstack < 0)
+            if (_count < 0)
             {
                 Console.WriteLine("Stack is null");
             }
-            int value = arrayint[topstack--];
-            Array.Resize(ref arrayint, arrayint.Length - 1);
-            return 1;
+            Array.Resize(ref _underliyngArray, _underliyngArray.Length - _count);
+            return _underliyngArray[--_count];
         }
 
         public void PrintStack()
         {
-            if (topstack < 0)
+            if (_count < 0)
             {
                 Console.WriteLine("Stack is null");
             }
-            Console.WriteLine("Your stack is ");
-            for (int i = topstack; i > 0; i--)
+            Console.WriteLine("Your stack is");
+            for (int i = _count; i >= 0; i--)
             {
-                Console.WriteLine(arrayint[i]);
+                Console.WriteLine(_underliyngArray[i]);
             }
         }
 
-        public IEnumerator GetEnumerator()
+        public void ForEach(Action<T> action)
         {
-            return arrayint.GetEnumerator();
+            for(int i = _count; i >= 0; i--)
+            {
+                action(_underliyngArray[i]);
+            }
         }
     }
 }
