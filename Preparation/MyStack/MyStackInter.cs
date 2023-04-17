@@ -55,12 +55,5 @@ namespace MyStack
                 Console.WriteLine(_underliyngArray[i]);
             }
         }
-        public void ForEach(Action<T> action)
-        {
-            for (int i = _count; i >= 0; i--)
-            {
-                action(_underliyngArray[i]);
-            }
-        }
     }
 }
