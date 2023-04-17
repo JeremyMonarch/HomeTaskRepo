@@ -1,11 +1,10 @@
 using System;
 using System.Collections;
-using System.Data;
-using System.Drawing;
+using System.Collections.Generic;
 
 namespace MyStack
 {
-    public class MyStack<T>
+    public sealed class MyStack<T>
     {
         private int _count = -1;
         private T[] _underliyngArray = new T[5];
@@ -29,14 +28,19 @@ namespace MyStack
             return _underliyngArray[_count];
         }
 
+        public bool IsEmpty()
+        {
+            return _count < 0;
+        }
+
+
         public T Pop()
         {
             if (_count < 0)
             {
                 Console.WriteLine("Stack is null");
             }
-            Array.Resize(ref _underliyngArray, _underliyngArray.Length - _count);
-            return _underliyngArray[--_count];
+            return _underliyngArray[_count--];
         }
 
         public void PrintStack()
@@ -51,10 +55,9 @@ namespace MyStack
                 Console.WriteLine(_underliyngArray[i]);
             }
         }
-
         public void ForEach(Action<T> action)
         {
-            for(int i = _count; i >= 0; i--)
+            for (int i = _count; i >= 0; i--)
             {
                 action(_underliyngArray[i]);
             }

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace MyStack
 {
@@ -25,8 +23,8 @@ namespace MyStack
             Console.WriteLine($"Now last element is: {arrayinteger.Peek()}");
             arrayinteger.PrintStack();
             Console.WriteLine("-----------------------------");
-            
-            arrayinteger.ForEach(item => Console.WriteLine($"{item} ")); //Array iterate by custom foreach
+
+            arrayinteger.ForEach(item => Console.WriteLine($"{item} "));
         }
     }
-}
+}   
