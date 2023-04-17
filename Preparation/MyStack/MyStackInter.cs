@@ -1,63 +1,58 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace MyStack
 {
-    public class MyStack
+    public sealed class MyStack<T>
     {
-        public static readonly int maxsize = 10;
-        public int topstack;
-        public int[] arrayint = new int[maxsize];
+        private int _count = -1;
+        private T[] _underliyngArray = new T[5];
 
-        public MyStack()
+        public void Push(T add)
         {
-            topstack = 0;
+            if (_count == _underliyngArray.Length - 1)
+            {
+                Array.Resize(ref _underliyngArray, _underliyngArray.Length * 2);
+            }
+            _count++;
+            _underliyngArray[_count] = add;
         }
 
-        public bool Add(int add)
+        public T Peek()
         {
-            if (topstack >= maxsize)
-            {
-                Console.WriteLine("Stack Overfllow");
-                return false;
-            }
-            else
-            {
-                arrayint[++topstack] = add;
-                return true;
-            }
-        }
-
-        public void SeeLastInter()
-        {
-            if (topstack < 0)
+            if (_count < 0)
             {
                 Console.WriteLine("Stack is null");
             }
-            Console.WriteLine($"Top element is  {topstack}");
+            return _underliyngArray[_count];
         }
 
-        public int Delete()
+        public bool IsEmpty()
         {
-            if (topstack < 0)
+            return _count < 0;
+        }
+
+
+        public T Pop()
+        {
+            if (_count < 0)
             {
                 Console.WriteLine("Stack is null");
             }
-
-            int value = arrayint[topstack--];
-            return value;
+            return _underliyngArray[_count--];
         }
 
         public void PrintStack()
         {
-            if (topstack < 0)
+            if (_count < 0)
             {
                 Console.WriteLine("Stack is null");
             }
-            Console.WriteLine("Your stack is ");
-            for (int i = topstack; i > 0; i--)
+            Console.WriteLine("Your stack is");
+            for (int i = _count; i >= 0; i--)
             {
-                Console.WriteLine(arrayint[i]);
+                Console.WriteLine(_underliyngArray[i]);
             }
         }
     }
