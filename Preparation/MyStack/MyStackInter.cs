@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace MyStack
 {
-    public sealed class MyStack<T>
+    public class MyStack<T> : IEnumerable<T>
     {
         private int _count = -1;
         private T[] _underliyngArray = new T[5];
@@ -21,9 +21,9 @@ namespace MyStack
 
         public T Peek()
         {
-            if (_count < 0)
+            if (IsEmpty())
             {
-                Console.WriteLine("Stack is null");
+                throw new InvalidOperationException("Stack is empty!");
             }
             return _underliyngArray[_count];
         }
@@ -33,27 +33,39 @@ namespace MyStack
             return _count < 0;
         }
 
-
         public T Pop()
         {
-            if (_count < 0)
+            if (IsEmpty())
             {
-                Console.WriteLine("Stack is null");
+                throw new InvalidOperationException("Stack is empty!");
             }
             return _underliyngArray[_count--];
         }
 
         public void PrintStack()
         {
-            if (_count < 0)
+            if (IsEmpty())
             {
-                Console.WriteLine("Stack is null");
+                throw new InvalidOperationException("Stack is empty!");
             }
             Console.WriteLine("Your stack is");
             for (int i = _count; i >= 0; i--)
             {
                 Console.WriteLine(_underliyngArray[i]);
             }
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            for (int i = 0; i < _underliyngArray.Length; i++)
+            {
+                yield return _underliyngArray[i];
+            }
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }

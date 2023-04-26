@@ -11,7 +11,7 @@ namespace MyStack
             MyStack<int> arrayinteger = new MyStack<int>();
             arrayinteger.Push(1);
             arrayinteger.Push(2);
-            arrayinteger.Push(3); 
+            arrayinteger.Push(3);
             arrayinteger.Push(4);
             arrayinteger.Push(5);
             arrayinteger.Push(6);
@@ -24,10 +24,11 @@ namespace MyStack
             arrayinteger.PrintStack();
             Console.WriteLine("-----------------------------");
 
-            while(!arrayinteger.IsEmpty())
+            foreach (var i in arrayinteger)
             {
-                Console.WriteLine(arrayinteger.Pop());
+                Console.WriteLine(i);
             }
+            Console.WriteLine("-----------------------------");
         }
     }
-}   
+}
