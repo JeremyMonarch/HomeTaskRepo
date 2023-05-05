@@ -42,30 +42,46 @@ namespace MyStack
             return _underliyngArray[_count--];
         }
 
-        public void PrintStack()
-        {
-            if (IsEmpty())
-            {
-                throw new InvalidOperationException("Stack is empty!");
-            }
-            Console.WriteLine("Your stack is");
-            for (int i = _count; i >= 0; i--)
-            {
-                Console.WriteLine(_underliyngArray[i]);
-            }
-        }
-
         public IEnumerator<T> GetEnumerator()
         {
-            for (int i = 0; i < _underliyngArray.Length; i++)
-            {
-                yield return _underliyngArray[i];
-            }
+            return new MyStackEnumerator<T>(_underliyngArray, _count);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+    }
+
+    public class MyStackEnumerator<T> : IEnumerator<T>
+    {
+        private T[] _underlineArray;
+        private int _index;
+        private int _count;
+
+        public MyStackEnumerator(T[] underlineArray, int count)
+        {
+            _underlineArray = underlineArray;
+            _count = count;
+            Reset();
+        }
+
+        public T Current => _underlineArray[_index];
+
+        object IEnumerator.Current => Current;
+
+        public void Dispose()
+        {
+        }
+
+        public void Reset()
+        {
+            _index = -1;
+        }
+
+        public bool MoveNext()
+        {
+            return _index++ < _count;
         }
     }
 }
