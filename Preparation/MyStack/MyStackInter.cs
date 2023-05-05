@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace MyStack
 {
-    public sealed class MyStack<T>
+    public class MyStack<T> : IEnumerable<T>
     {
         private int _count = -1;
         private T[] _underliyngArray = new T[5];
@@ -21,9 +21,9 @@ namespace MyStack
 
         public T Peek()
         {
-            if (_count < 0)
+            if (IsEmpty())
             {
-                Console.WriteLine("Stack is null");
+                throw new InvalidOperationException("Stack is empty!");
             }
             return _underliyngArray[_count];
         }
@@ -33,27 +33,55 @@ namespace MyStack
             return _count < 0;
         }
 
-
         public T Pop()
         {
-            if (_count < 0)
+            if (IsEmpty())
             {
-                Console.WriteLine("Stack is null");
+                throw new InvalidOperationException("Stack is empty!");
             }
             return _underliyngArray[_count--];
         }
 
-        public void PrintStack()
+        public IEnumerator<T> GetEnumerator()
         {
-            if (_count < 0)
-            {
-                Console.WriteLine("Stack is null");
-            }
-            Console.WriteLine("Your stack is");
-            for (int i = _count; i >= 0; i--)
-            {
-                Console.WriteLine(_underliyngArray[i]);
-            }
+            return new MyStackEnumerator<T>(_underliyngArray, _count);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+    }
+
+    public class MyStackEnumerator<T> : IEnumerator<T>
+    {
+        private T[] _underlineArray;
+        private int _index;
+        private int _count;
+
+        public MyStackEnumerator(T[] underlineArray, int count)
+        {
+            _underlineArray = underlineArray;
+            _count = count;
+            Reset();
+        }
+
+        public T Current => _underlineArray[_index];
+
+        object IEnumerator.Current => Current;
+
+        public void Dispose()
+        {
+        }
+
+        public void Reset()
+        {
+            _index = -1;
+        }
+
+        public bool MoveNext()
+        {
+            return _index++ < _count;
         }
     }
 }
