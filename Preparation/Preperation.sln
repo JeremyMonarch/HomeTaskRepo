@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Spiral_Array", "Preparation
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sand_Clock", "Sand_Clock\Sand_Clock.csproj", "{0184D83B-F939-4D19-A621-BB391591973A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyStack", "MyStack\MyStack.csproj", "{926CFE53-3BDB-4E2E-BE6E-ADC86D7C40BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyStack", "MyStack\MyStack.csproj", "{926CFE53-3BDB-4E2E-BE6E-ADC86D7C40BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Preperation.Tests", "TestProject1\Preperation.Tests.csproj", "{03846C76-A4F3-4FBF-BE37-578FAF119608}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{926CFE53-3BDB-4E2E-BE6E-ADC86D7C40BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{926CFE53-3BDB-4E2E-BE6E-ADC86D7C40BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{926CFE53-3BDB-4E2E-BE6E-ADC86D7C40BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03846C76-A4F3-4FBF-BE37-578FAF119608}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03846C76-A4F3-4FBF-BE37-578FAF119608}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03846C76-A4F3-4FBF-BE37-578FAF119608}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03846C76-A4F3-4FBF-BE37-578FAF119608}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
