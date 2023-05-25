@@ -20,10 +20,10 @@ namespace MyStack
             arrayinteger.Push(4);
             arrayinteger.Push(5);
             arrayinteger.Push(6);
-            //foreach (var item in arrayinteger.Reverse())
-            //{
-            //    Console.WriteLine(item);
-            //}
+            foreach (var item in arrayinteger.Reverse())
+            {
+                Console.WriteLine(item);
+            }
             Console.WriteLine("-----------------------------");
             Console.WriteLine("Item has been deleted is: {0}", arrayinteger.Peek());
             arrayinteger.Pop();
