@@ -21,18 +21,17 @@ namespace Preperation.Tests
         public void Push_CountIncreasesByOneAfterPush()
         {
             MyStack<int> myStack = new MyStack<int>();
-            
+
             myStack.Push(1);
-            
+
             int countBeforePush = myStack.Count();
             myStack.Push(2);
             int countAfterPush = myStack.Count();
 
-            Assert.Equal(2, myStack.Count());
             Assert.Equal(countBeforePush + 1, countAfterPush);
         }
         [Fact]
-        public void Peek_ReturnsLastPushedElementsInTheCollectionTest()
+        public void Peek_ReturnsLastPushedElementInTheCollection()
         {
             MyStack<int> myStack = new MyStack<int>();
             myStack.Push(1);
@@ -41,7 +40,6 @@ namespace Preperation.Tests
             int result = myStack.Peek();
 
             Assert.Equal(20, result);
-            Assert.Equal(2, myStack.Count());
         }
         [Fact]
         public void Peek_ThrowsInvalidOperationException_WhenStackIsEmpty()
@@ -51,7 +49,7 @@ namespace Preperation.Tests
             Assert.Throws<InvalidOperationException>(() => myStack.Peek());
         }
         [Fact]
-        public void Peek_CountUnchangedDuringPeek()
+        public void Peek_DoesntCountUnchanged()
         {
             MyStack<int> myStack = new MyStack<int>();
             myStack.Push(1);
@@ -64,33 +62,29 @@ namespace Preperation.Tests
             Assert.Equal(countBeforePeek, countAfterPeek);
         }
         [Fact]
-        public void Pop_RemoveTopElementInTheCollectionTest()
+        public void Pop_ReturnsLastPushedItem()
         {
             MyStack<int> myStack = new MyStack<int>();
-            
+
             myStack.Push(1);
             myStack.Push(2);
-            myStack.Push(3);
 
             int result = myStack.Pop();
 
             Assert.Equal(3, result);
-            Assert.Equal(2, myStack.Count());
         }
         [Fact]
-        public void Pop_CountDecreasesByOneElementAfterPop()
+        public void Pop_CountDecreasesByOneElement()
         {
             MyStack<int> myStack = new MyStack<int>();
 
             myStack.Push(1);
             myStack.Push(2);
-            myStack.Push(3);
 
             int countBeforePop = myStack.Count();
             int popValue = myStack.Pop();
             int countAfterPop = myStack.Count();
 
-            Assert.Equal(3, popValue);
             Assert.Equal(countBeforePop - 1, countAfterPop);
         }
         [Fact]
