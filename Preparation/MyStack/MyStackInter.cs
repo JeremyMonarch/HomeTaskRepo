@@ -9,6 +9,8 @@ namespace MyStack
         private int _count = -1;
         private T[] _underliyngArray = new T[5];
 
+        public event Action<int, bool> ItemAddOrDelete;
+
         public void Push(T add)
         {
             if (_count == _underliyngArray.Length - 1)
@@ -17,6 +19,8 @@ namespace MyStack
             }
             _count++;
             _underliyngArray[_count] = add;
+
+            ItemAddOrDelete?.Invoke(_count + 1, true);
         }
 
         public T Peek()
@@ -39,6 +43,9 @@ namespace MyStack
             {
                 throw new InvalidOperationException("Stack is empty!");
             }
+            
+            ItemAddOrDelete?.Invoke(_count + 1, false);
+
             return _underliyngArray[_count--];
         }
 

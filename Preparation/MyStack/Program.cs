@@ -11,16 +11,19 @@ namespace MyStack
             Console.WriteLine("Hi! You do THIS shiiiiit");
 
             MyStack<int> arrayinteger = new MyStack<int>();
+            
+            arrayinteger.ItemAddOrDelete += HandleItemAddOrDelete;
+            
             arrayinteger.Push(1);
             arrayinteger.Push(2);
             arrayinteger.Push(3);
             arrayinteger.Push(4);
             arrayinteger.Push(5);
             arrayinteger.Push(6);
-            foreach (var item in arrayinteger.Reverse())
-            {
-                Console.WriteLine(item);
-            }
+            //foreach (var item in arrayinteger.Reverse())
+            //{
+            //    Console.WriteLine(item);
+            //}
             Console.WriteLine("-----------------------------");
             Console.WriteLine("Item has been deleted is: {0}", arrayinteger.Peek());
             arrayinteger.Pop();
@@ -36,6 +39,18 @@ namespace MyStack
                 Console.WriteLine(i);
             }
             Console.WriteLine("-----------------------------");
+        }
+
+        private static void HandleItemAddOrDelete(int item, bool added)
+        {
+            if(added)
+            {
+                Console.WriteLine("EVENT: Element is added: " + item);
+            }
+            else
+            {
+                Console.WriteLine("EVENT: Element is deleted: " + item);
+            }
         }
     }
 }
