@@ -18,7 +18,7 @@ namespace Preperation.Tests
             Assert.Single(myStack);
         }
         [Fact]
-        public void Push_CountIncreasesByOneAfterPush()
+        public void Push_IncreasesCountByOne()
         {
             MyStack<int> myStack = new MyStack<int>();
 
@@ -31,7 +31,7 @@ namespace Preperation.Tests
             Assert.Equal(countBeforePush + 1, countAfterPush);
         }
         [Fact]
-        public void Peek_ReturnsLastPushedElementInTheCollection()
+        public void Peek_ReturnsLastPushedElement()
         {
             MyStack<int> myStack = new MyStack<int>();
             myStack.Push(1);
@@ -49,7 +49,7 @@ namespace Preperation.Tests
             Assert.Throws<InvalidOperationException>(() => myStack.Peek());
         }
         [Fact]
-        public void Peek_DoesntCountUnchanged()
+        public void Peek_DoesNotChangeCount()
         {
             MyStack<int> myStack = new MyStack<int>();
             myStack.Push(1);
@@ -62,7 +62,7 @@ namespace Preperation.Tests
             Assert.Equal(countBeforePeek, countAfterPeek);
         }
         [Fact]
-        public void Pop_ReturnsLastPushedItem()
+        public void Pop_ReturnsLastPushedElement()
         {
             MyStack<int> myStack = new MyStack<int>();
 
@@ -71,10 +71,10 @@ namespace Preperation.Tests
 
             int result = myStack.Pop();
 
-            Assert.Equal(3, result);
+            Assert.Equal(2, result);
         }
         [Fact]
-        public void Pop_CountDecreasesByOneElement()
+        public void Pop_DecreasesCountByOneElement()
         {
             MyStack<int> myStack = new MyStack<int>();
 
@@ -82,7 +82,7 @@ namespace Preperation.Tests
             myStack.Push(2);
 
             int countBeforePop = myStack.Count();
-            int popValue = myStack.Pop();
+            myStack.Pop();
             int countAfterPop = myStack.Count();
 
             Assert.Equal(countBeforePop - 1, countAfterPop);
