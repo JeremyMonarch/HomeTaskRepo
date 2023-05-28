@@ -12,8 +12,9 @@ namespace MyStack
 
             MyStack<int> arrayinteger = new MyStack<int>();
             
-            arrayinteger.ItemAddOrDelete += HandleItemAddOrDelete;
-            
+            arrayinteger.ItemAdd += HandleItemAdd;
+            arrayinteger.ItemDelete += HandleItemDelete;
+
             arrayinteger.Push(1);
             arrayinteger.Push(2);
             arrayinteger.Push(3);
@@ -41,16 +42,13 @@ namespace MyStack
             Console.WriteLine("-----------------------------");
         }
 
-        private static void HandleItemAddOrDelete(int item, bool added)
+        private static void HandleItemAdd(int item, bool added)
         {
-            if(added)
-            {
-                Console.WriteLine("EVENT: Element is added: " + item);
-            }
-            else
-            {
-                Console.WriteLine("EVENT: Element is deleted: " + item);
-            }
+            Console.WriteLine("EVENT: Element is added: " + item);
+        }
+        private static void HandleItemDelete(int item, bool delete)
+        {
+            Console.WriteLine("EVENT: Element is deleted: " + item);
         }
     }
 }
