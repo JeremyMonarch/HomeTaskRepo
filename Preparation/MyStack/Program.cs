@@ -12,8 +12,8 @@ namespace MyStack
 
             MyStack<int> arrayinteger = new MyStack<int>();
             
-            arrayinteger.ItemAdd += HandleItemAdd;
-            arrayinteger.ItemDelete += HandleItemDelete;
+            arrayinteger.ItemPushed += HandleItemPushed;
+            arrayinteger.ItemDeleted += HandleItemPushed;
 
             arrayinteger.Push(1);
             arrayinteger.Push(2);
@@ -42,11 +42,11 @@ namespace MyStack
             Console.WriteLine("-----------------------------");
         }
 
-        private static void HandleItemAdd(int item)
+        private static void HandleItemPushed(int item)
         {
             Console.WriteLine("EVENT: Element is added: " + item);
         }
-        private static void HandleItemDelete(int item)
+        private static void HandleItemDeleted(int item)
         {
             Console.WriteLine("EVENT: Element is deleted: " + item);
         }

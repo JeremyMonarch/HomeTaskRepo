@@ -9,8 +9,8 @@ namespace MyStack
         private int _count = -1;
         private T[] _underliyngArray = new T[5];
 
-        public event Action<T, bool> ItemAdd;
-        public event Action<T, bool> ItemDelete;
+        public event Action<T> ItemPushed;
+        public event Action<T> ItemDeleted;
 
         public void Push(T add)
         {
@@ -21,7 +21,7 @@ namespace MyStack
             _count++;
             _underliyngArray[_count] = add;
 
-            ItemAdd?.Invoke(add, true);
+            ItemPushed?.Invoke(add);
         }
 
         public T Peek()
@@ -45,7 +45,7 @@ namespace MyStack
                 throw new InvalidOperationException("Stack is empty!");
             }
 
-            ItemDelete?.Invoke(_underliyngArray[_count], false);
+            ItemDeleted?.Invoke(_underliyngArray[_count]);
 
             return _underliyngArray[_count--];
         }
