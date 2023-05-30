@@ -10,7 +10,7 @@ namespace MyStack
         private T[] _underliyngArray = new T[5];
 
         public event Action<T> ItemPushed;
-        public event Action<T> ItemDeleted;
+        public event Action<T> ItemPopped;
 
         public void Push(T add)
         {
@@ -45,7 +45,7 @@ namespace MyStack
                 throw new InvalidOperationException("Stack is empty!");
             }
 
-            ItemDeleted?.Invoke(_underliyngArray[_count]);
+            ItemPopped?.Invoke(_underliyngArray[_count]);
 
             return _underliyngArray[_count--];
         }
