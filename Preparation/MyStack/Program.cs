@@ -42,11 +42,11 @@ namespace MyStack
             Console.WriteLine("-----------------------------");
         }
 
-        private static void HandleItemAdd(int item, bool added)
+        private static void HandleItemAdd(int item)
         {
             Console.WriteLine("EVENT: Element is added: " + item);
         }
-        private static void HandleItemDelete(int item, bool delete)
+        private static void HandleItemDelete(int item)
         {
             Console.WriteLine("EVENT: Element is deleted: " + item);
         }
