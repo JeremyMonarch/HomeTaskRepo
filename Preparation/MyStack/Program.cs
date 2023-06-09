@@ -11,6 +11,10 @@ namespace MyStack
             Console.WriteLine("Hi! You do THIS shiiiiit");
 
             MyStack<int> arrayinteger = new MyStack<int>();
+            
+            arrayinteger.ItemPushed += HandleItemPushed;
+            arrayinteger.ItemPopped += HandleItemPopped;
+
             arrayinteger.Push(1);
             arrayinteger.Push(2);
             arrayinteger.Push(3);
@@ -36,6 +40,15 @@ namespace MyStack
                 Console.WriteLine(i);
             }
             Console.WriteLine("-----------------------------");
+        }
+
+        private static void HandleItemPushed(int item)
+        {
+            Console.WriteLine("EVENT: Element is added: " + item);
+        }
+        private static void HandleItemPopped(int item)
+        {
+            Console.WriteLine("EVENT: Element is deleted: " + item);
         }
     }
 }
